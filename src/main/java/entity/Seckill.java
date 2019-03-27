@@ -1,6 +1,7 @@
 package entity;
 
-import javax.xml.crypto.Data;
+
+import java.util.Date;
 
 /**
  * Created by vince
@@ -24,9 +25,9 @@ public class Seckill {
     private long seckillId;
     private String name;
     private int number;
-    private Data startTime;
-    private Data endTime;
-    private Data createTime;
+    private Date startTime;
+    private Date endTime;
+    private Date createTime;
 
     public long getSeckillId() {
         return seckillId;
@@ -52,27 +53,27 @@ public class Seckill {
         this.number = number;
     }
 
-    public Data getStartTime() {
+    public Date getStartTime() {
         return startTime;
     }
 
-    public void setStartTime(Data startTime) {
+    public void setStartTime(Date startTime) {
         this.startTime = startTime;
     }
 
-    public Data getEndTime() {
+    public Date getEndTime() {
         return endTime;
     }
 
-    public void setEndTime(Data endTime) {
+    public void setEndTime(Date endTime) {
         this.endTime = endTime;
     }
 
-    public Data getCreateTime() {
+    public Date getCreateTime() {
         return createTime;
     }
 
-    public void setCreateTime(Data createTime) {
+    public void setCreateTime(Date createTime) {
         this.createTime = createTime;
     }
 
