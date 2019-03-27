@@ -1,6 +1,7 @@
 package dao;
 
 import entity.SuccessKilled;
+import org.apache.ibatis.annotations.Param;
 
 /**
  * Created by vince
@@ -17,7 +18,7 @@ public interface SuccessKilledDao {
      * @param userPhone
      * @return 插入的行数
      */
-    int insertSuccessKilled(long seckillId,long userPhone);
+    int insertSuccessKilled(@Param("seckillId") long seckillId,@Param("userPhone") long userPhone);
 
     /**
      * 根据主键查询明细 携带产品对象
@@ -25,5 +26,5 @@ public interface SuccessKilledDao {
      * @param userPhone
      * @return
      */
-    SuccessKilled queryByIdAndPhoneWithSeckill(long seckillId,long userPhone);
+    SuccessKilled queryByIdAndPhoneWithSeckill(@Param("seckillId") long seckillId,@Param("userPhone") long userPhone);
 }

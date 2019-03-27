@@ -11,8 +11,6 @@ import javax.annotation.Resource;
 import java.util.Date;
 import java.util.List;
 
-import static org.junit.Assert.*;
-
 /**
  * Created by vince
  * Email: so_vince@outlook.com
@@ -24,7 +22,7 @@ import static org.junit.Assert.*;
  * spring-test和junit
  */
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration({"classpath:spring/spring-config.xml"})
+@ContextConfiguration({"classpath:spring/spring-dao.xml"})
 public class SeckillDaoTest {
 
     //注入DAO实现类依赖
