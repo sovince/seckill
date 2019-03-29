@@ -26,13 +26,13 @@ public class SuccessKilledDaoTest {
 
     @Test
     public void insertSuccessKilled() {
-        int i = successKilledDao.insertSuccessKilled(1000, 13588888888L);
+        int i = successKilledDao.insertSuccessKilled(1000L, 13588888888L);
         System.out.println(i);
     }
 
     @Test
     public void queryByIdAndPhoneWithSeckill() {
-        SuccessKilled successKilled = successKilledDao.queryByIdAndPhoneWithSeckill(1000, 13588888888L);
+        SuccessKilled successKilled = successKilledDao.queryByIdAndPhoneWithSeckill(1000L, 13588888888L);
         System.out.println(successKilled);
         System.out.println(successKilled.getSeckill());
     }

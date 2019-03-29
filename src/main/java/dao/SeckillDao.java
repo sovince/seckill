@@ -20,7 +20,7 @@ public interface SeckillDao {
      * @param killTime 对应着createTime
      * @return 影响行数
      */
-    int reduceNumber(@Param("seckillId") long seckillId, @Param("killTime") Date killTime);
+    int reduceNumber(@Param("seckillId") Long seckillId, @Param("killTime") Date killTime);
 
 
     /**
@@ -28,7 +28,7 @@ public interface SeckillDao {
      * @param seckillId
      * @return
      */
-    Seckill queryById(long seckillId);
+    Seckill queryById(Long seckillId);
 
     /**
      * 根据偏移量查询商品列表
@@ -36,5 +36,5 @@ public interface SeckillDao {
      * @param limit
      * @return
      */
-    List<Seckill> queryAll(@Param("offset") int offset, @Param("limit") int limit);
+    List<Seckill> queryAll(@Param("offset") Integer offset, @Param("limit") Integer limit);
 }

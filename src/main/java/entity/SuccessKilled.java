@@ -14,35 +14,35 @@ import java.util.Date;
  * `create_time` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
  */
 public class SuccessKilled {
-    private long seckillId;
-    private long userPhone;
-    private short state;
+    private Long seckillId;
+    private Long userPhone;
+    private Short state;
     private Date createTime;
 
     //多对一，多个明细记录对应一个商品
     private Seckill seckill;
 
-    public long getSeckillId() {
+    public Long getSeckillId() {
         return seckillId;
     }
 
-    public void setSeckillId(long seckillId) {
+    public void setSeckillId(Long seckillId) {
         this.seckillId = seckillId;
     }
 
-    public long getUserPhone() {
+    public Long getUserPhone() {
         return userPhone;
     }
 
-    public void setUserPhone(long userPhone) {
+    public void setUserPhone(Long userPhone) {
         this.userPhone = userPhone;
     }
 
-    public short getState() {
+    public Short getState() {
         return state;
     }
 
-    public void setState(short state) {
+    public void setState(Short state) {
         this.state = state;
     }
 
