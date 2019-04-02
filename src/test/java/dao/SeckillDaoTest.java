@@ -7,6 +7,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import redis.clients.jedis.Jedis;
 
 import javax.annotation.Resource;
 
@@ -58,6 +59,16 @@ public class SeckillDaoTest {
         for (Seckill seckill:seckills){
             System.out.println(seckill);
         }
+    }
+
+    @Test
+    public void connectRedis(){
+        Jedis jedis = new Jedis("localhost",6379);
+        jedis.set("foo","bar");
+        String value = jedis.get("foo");
+        System.out.println(value);
+
+
 
     }
 }

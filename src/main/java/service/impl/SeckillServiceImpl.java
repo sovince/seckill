@@ -2,6 +2,7 @@ package service.impl;
 
 import dao.SeckillDao;
 import dao.SuccessKilledDao;
+import dao.cache.RedisSeckillDao;
 import dto.Exposer;
 import dto.SeckillExcution;
 import entity.Seckill;
@@ -39,6 +40,9 @@ public class SeckillServiceImpl implements SeckillService {
     @Autowired
     private SuccessKilledDao successKilledDao;
 
+    @Autowired
+    private RedisSeckillDao redisSeckillDao;
+
     private final String salt = "asdwoh89&(Y*&GUBHJ";//md5的盐值
 
     @Override
@@ -53,10 +57,16 @@ public class SeckillServiceImpl implements SeckillService {
 
     @Override
     public Exposer exportSeckillUrl(Long seckillId) {
-        Seckill seckill = seckillDao.queryById(seckillId);
-        if (seckill == null) {
-            return new Exposer(false, seckillId);
+        Seckill seckill = redisSeckillDao.get(seckillId);
+        if(seckill==null){
+            seckill = seckillDao.queryById(seckillId);
+            if(seckill==null){
+                return new Exposer(false, seckillId);
+            }else{
+                redisSeckillDao.set(seckill);
+            }
         }
+
         Date startTime = seckill.getStartTime();
         Date endTime = seckill.getEndTime();
         Date nowTime = new Date();
