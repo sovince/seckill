@@ -1,6 +1,7 @@
 package dao;
 
 import entity.Seckill;
+import org.apache.commons.collections.MapUtils;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.slf4j.Logger;
@@ -12,7 +13,9 @@ import redis.clients.jedis.Jedis;
 import javax.annotation.Resource;
 
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by vince
@@ -68,7 +71,26 @@ public class SeckillDaoTest {
         String value = jedis.get("foo");
         System.out.println(value);
 
+    }
 
+    @Test
+    public void executeSeckillByProceducre(){
+        /**
+         *           #{seckillId,jdbcType=BIGINT,mode=IN},
+         *           #{phone,jdbcType=BIGINT,mode=IN},
+         *           #{killTime,jdbcType=TIMESTAMP,mode=IN},
+         *           #{result,jdbcType=INTEGER,mode=OUT},
+         */
+        Map<String,Object> paramMap = new HashMap<>();
+        paramMap.put("seckillId",1001L);
+        paramMap.put("phone",13599999999L);
+        paramMap.put("killTime",new Date());
+        paramMap.put("result",null);
+
+        seckillDao.executeSeckillByProceducre(paramMap);
+
+        Integer result = MapUtils.getInteger(paramMap, "result", -2);
+        logger.info("result={}",result);
 
     }
 }
