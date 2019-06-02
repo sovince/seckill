@@ -17,8 +17,9 @@ import java.util.Map;
 public interface SeckillDao {
     /**
      * 减库存
+     *
      * @param seckillId
-     * @param killTime 对应着createTime
+     * @param killTime  对应着createTime
      * @return 影响行数
      */
     int reduceNumber(@Param("seckillId") Long seckillId, @Param("killTime") Date killTime);
@@ -26,6 +27,7 @@ public interface SeckillDao {
 
     /**
      * 根据id查询商品
+     *
      * @param seckillId
      * @return
      */
@@ -33,6 +35,7 @@ public interface SeckillDao {
 
     /**
      * 根据偏移量查询商品列表
+     *
      * @param offset
      * @param limit
      * @return
@@ -42,7 +45,8 @@ public interface SeckillDao {
 
     /**
      * 利用存储过程秒杀商品
+     *
      * @param paramMap
      */
-    void executeSeckillByProceducre(Map<String,Object> paramMap);
+    void executeSeckillByProceducre(Map<String, Object> paramMap);
 }

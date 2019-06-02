@@ -9,13 +9,13 @@ import java.util.Date;
  * Data: 2019/3/21
  * Time: 21:38
  * Description:
- *
+ * <p>
  * *      `seckill_id` BIGINT NOT NULL AUTO_INCREMENT COMMENT '商品库存id',
- *      * `name` VARCHAR (120) NOT NULL COMMENT '商品名称',
- *      * `number` INT NOT NULL COMMENT '库存数量',
- *      * `start_time` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00' COMMENT '秒杀开启时间',
- *      *   `end_time` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00' COMMENT '秒杀结束时间',
- *      * `create_time` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+ * * `name` VARCHAR (120) NOT NULL COMMENT '商品名称',
+ * * `number` INT NOT NULL COMMENT '库存数量',
+ * * `start_time` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00' COMMENT '秒杀开启时间',
+ * *   `end_time` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00' COMMENT '秒杀结束时间',
+ * * `create_time` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
  */
 public class Seckill {
 

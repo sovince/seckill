@@ -41,12 +41,12 @@ public class RedisSeckillDaoTest {
     @Test
     public void get() {
         Seckill seckill = redisSeckillDao.get(1004L);
-        logger.info("seckill={}",seckill);
+        logger.info("seckill={}", seckill);
     }
 
     @Test
     public void set() {
         String set = redisSeckillDao.set(seckillDao.queryById(1000L));// 成功返回 "OK"
-        logger.info("set={}",set);
+        logger.info("set={}", set);
     }
 }

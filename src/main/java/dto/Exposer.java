@@ -21,6 +21,7 @@ public class Exposer {
 
     /**
      * 开启时给出url(md5)
+     *
      * @param exposed
      * @param md5
      * @param seckillId
@@ -33,12 +34,13 @@ public class Exposer {
 
     /**
      * 未开启时 给出系统时间和秒杀时间
+     *
      * @param exposed
      * @param now
      * @param start
      * @param end
      */
-    public Exposer(Boolean exposed, Long seckillId,Long now, Long start, Long end) {
+    public Exposer(Boolean exposed, Long seckillId, Long now, Long start, Long end) {
         this.exposed = exposed;
         this.seckillId = seckillId;
         this.now = now;

@@ -8,11 +8,11 @@ package enums;
  * Description:
  */
 public enum SeckillStatEnum {
-    SUCCESS(1,"秒杀成功"),
-    END(0,"秒杀结束"),
-    REPEAT_KILL(-1,"重复秒杀"),
-    INNER_ERROR(-2,"系统异常"),
-    DATA_REWRITE(-3,"数据篡改");
+    SUCCESS(1, "秒杀成功"),
+    END(0, "秒杀结束"),
+    REPEAT_KILL(-1, "重复秒杀"),
+    INNER_ERROR(-2, "系统异常"),
+    DATA_REWRITE(-3, "数据篡改");
     private Integer state;
     private String stateInfo;
 
@@ -29,9 +29,9 @@ public enum SeckillStatEnum {
         return stateInfo;
     }
 
-    public static SeckillStatEnum stateOf(Integer index){
-        for (SeckillStatEnum state:values()){
-            if(state.getState()==index){
+    public static SeckillStatEnum stateOf(Integer index) {
+        for (SeckillStatEnum state : values()) {
+            if (state.getState() == index) {
                 return state;
             }
         }

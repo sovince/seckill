@@ -43,7 +43,7 @@
         <!--扫描sql配置文件：mapper需要的xml文件-->
         <property name="mapperLocations" value="classpath:mappper/*.xml"/>
     </bean>
-    
+
     <!--4.配置扫描DAO接口包，动态实现DAO接口-->
     <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
         <!--注入sqlSessionFactory-->
@@ -51,8 +51,8 @@
         <!--给出扫描DAO接口包-->
         <property name="basePackage" value="dao"/>
     </bean>
-    
-<!--约定大于配置-->
+
+    <!--约定大于配置-->
 
     <!--Redis-->
     <bean id="redisSeckillDao" class="dao.cache.RedisSeckillDao">

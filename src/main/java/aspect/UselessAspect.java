@@ -1,5 +1,6 @@
 package aspect;
 
+import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.annotation.After;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
@@ -13,20 +14,23 @@ import org.springframework.stereotype.Component;
  * Time: 14:41
  * Description:
  */
-@Component("testAspect")
+@Component()
 @Aspect
 public class UselessAspect {
 
     @Pointcut("within(service.impl.UselessServiceImpl)")
-    public void logger(){}
+    public void logger() {
+    }
 
     @Before("logger()")
-    public void before(){
+    public void before(JoinPoint joinPoint) {
+        Class<?> aClass = joinPoint.getTarget().getClass();
+        System.out.println(aClass);
         System.out.println("do something before");
     }
 
     @After("logger()")
-    public void after(){
+    public void after() {
         System.out.println("do something after");
     }
 }

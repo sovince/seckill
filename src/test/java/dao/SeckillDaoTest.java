@@ -23,7 +23,7 @@ import java.util.Map;
  * Data: 2019/3/26
  * Time: 22:46
  * Description:
- *
+ * <p>
  * 配置spring和junit整合，junit启动时加载springIOC容器
  * spring-test和junit
  */
@@ -40,7 +40,7 @@ public class SeckillDaoTest {
     @Test
     public void reduceNumber() {
         long id = 1000;
-        int result = seckillDao.reduceNumber(id,new Date());
+        int result = seckillDao.reduceNumber(id, new Date());
         System.out.println(result);
 
     }
@@ -52,45 +52,45 @@ public class SeckillDaoTest {
         System.out.println(seckill.getName());
         System.out.println(seckill.getCreateTime());
         //System.out.println(seckill);
-        logger.info("seckill={}",seckill);
+        logger.info("seckill={}", seckill);
 
     }
 
     @Test
     public void queryAll() {
         List<Seckill> seckills = seckillDao.queryAll(0, 100);
-        for (Seckill seckill:seckills){
+        for (Seckill seckill : seckills) {
             System.out.println(seckill);
         }
     }
 
     @Test
-    public void connectRedis(){
-        Jedis jedis = new Jedis("localhost",6379);
-        jedis.set("foo","bar");
+    public void connectRedis() {
+        Jedis jedis = new Jedis("localhost", 6379);
+        jedis.set("foo", "bar");
         String value = jedis.get("foo");
         System.out.println(value);
 
     }
 
     @Test
-    public void executeSeckillByProceducre(){
+    public void executeSeckillByProceducre() {
         /**
          *           #{seckillId,jdbcType=BIGINT,mode=IN},
          *           #{phone,jdbcType=BIGINT,mode=IN},
          *           #{killTime,jdbcType=TIMESTAMP,mode=IN},
          *           #{result,jdbcType=INTEGER,mode=OUT},
          */
-        Map<String,Object> paramMap = new HashMap<>();
-        paramMap.put("seckillId",1001L);
-        paramMap.put("phone",13599999999L);
-        paramMap.put("killTime",new Date());
-        paramMap.put("result",null);
+        Map<String, Object> paramMap = new HashMap<>();
+        paramMap.put("seckillId", 1001L);
+        paramMap.put("phone", 13599999999L);
+        paramMap.put("killTime", new Date());
+        paramMap.put("result", null);
 
         seckillDao.executeSeckillByProceducre(paramMap);
 
         Integer result = MapUtils.getInteger(paramMap, "result", -2);
-        logger.info("result={}",result);
+        logger.info("result={}", result);
 
     }
 }

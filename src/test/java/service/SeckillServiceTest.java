@@ -37,19 +37,19 @@ public class SeckillServiceTest {
     @Test
     public void getSeckillList() {
         List<Seckill> seckillList = seckillService.getSeckillList();
-        logger.info("seckillList={}",seckillList);
+        logger.info("seckillList={}", seckillList);
     }
 
     @Test
     public void getById() {
         Seckill seckill = seckillService.getById(1000L);
-        logger.info("seckill={}",seckill);
+        logger.info("seckill={}", seckill);
     }
 
     @Test
     public void exportSeckillUrl() {
         Exposer exposer = seckillService.exportSeckillUrl(1000L);
-        logger.info("exposer={}",exposer);
+        logger.info("exposer={}", exposer);
         //{exposed=true, md5='b00a2dff432789d2bead5a77e29c80aa', seckillId=1000,
     }
 
@@ -59,7 +59,7 @@ public class SeckillServiceTest {
         Long phone = 13588381366L;
         String md5 = "b00a2dff432789d2bead5a77e29c80aa";
         SeckillExcution seckillExcution = seckillService.executeSeckill(id, phone, md5);
-        logger.info("result={}",seckillExcution);
+        logger.info("result={}", seckillExcution);
 
         //result=SeckillExcution{
         // seckillId=1000, state=1, stateInfo='秒杀成功',
@@ -72,21 +72,21 @@ public class SeckillServiceTest {
      * 完整的逻辑测试
      */
     @Test
-    public void seckillLogic(){
+    public void seckillLogic() {
         Long id = 1000L;
         Exposer exposer = seckillService.exportSeckillUrl(id);
-        if(exposer.getExposed()){
-            logger.info("exposer={}",exposer);
+        if (exposer.getExposed()) {
+            logger.info("exposer={}", exposer);
             Long phone = 13588381369L;
             String md5 = exposer.getMd5();
             try {
                 SeckillExcution seckillExcution = seckillService.executeSeckill(id, phone, md5);
-                logger.info("seckillExcution={}",seckillExcution);
-            }catch (RepeatKillException | SeckillCloseException e){
+                logger.info("seckillExcution={}", seckillExcution);
+            } catch (RepeatKillException | SeckillCloseException e) {
                 logger.error(e.getMessage());
             }
-        }else {
-            logger.warn("exposer={}",exposer);
+        } else {
+            logger.warn("exposer={}", exposer);
         }
 
     }

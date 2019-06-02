@@ -22,6 +22,7 @@ public class SeckillExcution {
 
     /**
      * 成功时给出所有信息
+     *
      * @param seckillId
      * @param seckillStatEnum
      * @param successKilled
@@ -35,6 +36,7 @@ public class SeckillExcution {
 
     /**
      * 失败就不给明细
+     *
      * @param seckillId
      * @param seckillStatEnum
      */

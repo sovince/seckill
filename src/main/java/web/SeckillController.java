@@ -107,11 +107,11 @@ public class SeckillController {
         return result;
     }
 
-    @RequestMapping(value = "/time/now",method = RequestMethod.GET)
+    @RequestMapping(value = "/time/now", method = RequestMethod.GET)
     @ResponseBody
-    public SeckillResult<Long> time(){
+    public SeckillResult<Long> time() {
         Date date = new Date();
-        return new SeckillResult<>(true,date.getTime());
+        return new SeckillResult<>(true, date.getTime());
     }
 
 }

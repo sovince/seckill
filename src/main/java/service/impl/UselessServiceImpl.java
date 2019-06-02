@@ -12,7 +12,7 @@ import org.springframework.stereotype.Service;
 @Service
 public class UselessServiceImpl {
 
-    public void say(){
+    public void say() {
         System.out.println("this is a test for aop");
     }
 }

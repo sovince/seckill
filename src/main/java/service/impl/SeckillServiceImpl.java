@@ -58,11 +58,11 @@ public class SeckillServiceImpl implements SeckillService {
     @Override
     public Exposer exportSeckillUrl(Long seckillId) {
         Seckill seckill = redisSeckillDao.get(seckillId);
-        if(seckill==null){
+        if (seckill == null) {
             seckill = seckillDao.queryById(seckillId);
-            if(seckill==null){
+            if (seckill == null) {
                 return new Exposer(false, seckillId);
-            }else{
+            } else {
                 redisSeckillDao.set(seckill);
             }
         }
@@ -80,7 +80,7 @@ public class SeckillServiceImpl implements SeckillService {
 
     /**
      * 使用事务   要保证事务执行时间尽可能短
-     *
+     * <p>
      * 这个方法是先减库存再插入明细  可以调换逻辑执行顺序使事务行锁的时间减短
      * 或者采用mysql的存储过程来进行优化 详细在executeSeckill.sql
      */

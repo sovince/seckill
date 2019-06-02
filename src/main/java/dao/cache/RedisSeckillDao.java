@@ -24,33 +24,32 @@ public class RedisSeckillDao {
 
     private final Schema<Seckill> seckillSchema = RuntimeSchema.getSchema(Seckill.class);
 
-    public RedisSeckillDao(String ip,int port) {
-        this.jedisPool = new JedisPool(ip,port);
+    public RedisSeckillDao(String ip, int port) {
+        this.jedisPool = new JedisPool(ip, port);
     }
 
 
-
-    public Seckill get(Long seckillId){
+    public Seckill get(Long seckillId) {
         try {
             Jedis resource = jedisPool.getResource();
             try {
                 String key = getKey(seckillId);
                 byte[] bytes = resource.get(key.getBytes());
-                if(bytes==null) return null;
+                if (bytes == null) return null;
                 Seckill seckill = seckillSchema.newMessage();
-                ProtobufIOUtil.mergeFrom(bytes,seckill,seckillSchema);
+                ProtobufIOUtil.mergeFrom(bytes, seckill, seckillSchema);
                 return seckill;
-            }finally {
+            } finally {
                 resource.close();
             }
 
-        }catch (Exception e){
-            logger.error(e.getMessage(),e);
+        } catch (Exception e) {
+            logger.error(e.getMessage(), e);
         }
         return null;
     }
 
-    public String set(Seckill seckill){
+    public String set(Seckill seckill) {
         try {
             Jedis resource = jedisPool.getResource();
             try {
@@ -58,17 +57,17 @@ public class RedisSeckillDao {
                 LinkedBuffer linkedBuffer = LinkedBuffer.allocate(LinkedBuffer.DEFAULT_BUFFER_SIZE);
                 byte[] bytes = ProtobufIOUtil.toByteArray(seckill, seckillSchema, linkedBuffer);
                 return resource.setex(key.getBytes(), 3600, bytes);
-            }finally {
+            } finally {
                 resource.close();
             }
 
-        }catch (Exception e){
-            logger.error(e.getMessage(),e);
+        } catch (Exception e) {
+            logger.error(e.getMessage(), e);
         }
         return null;
     }
 
-    private String getKey(Long seckillId){
-        return "seckill:"+seckillId;
+    private String getKey(Long seckillId) {
+        return "seckill:" + seckillId;
     }
 }
